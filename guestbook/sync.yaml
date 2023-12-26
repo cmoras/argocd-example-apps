@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: clen
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: clen
+  template:
+    metadata:
+      labels:
+        app: clen
+    spec:
+      containers:
+      - image: gcr.io/heptio-images/ks-guestbook-demo:0.2
+        name: clen
+        ports:
+        - containerPort: 80
+
